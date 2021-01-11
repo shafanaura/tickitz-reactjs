@@ -1,0 +1,21 @@
+.infinity-image-container {
+	background: linear-gradient(rgba(51, 0, 146, 0.836), rgba(19, 0, 41, 0.808)),
+		url(https://images6.alphacoders.com/100/thumb-1920-1009588.jpg) center
+			no-repeat;
+	background-size: cover;
+	height: 110vh;
+}
+.infinity-form-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.infinity-form {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+.infinity-form .form-input {
+	position: relative;
+}

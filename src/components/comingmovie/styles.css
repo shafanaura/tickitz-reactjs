@@ -1,0 +1,8 @@
+.scrollmenu .card {
+	border-radius: 24px !important;
+	min-width: 200px;
+}
+.scrollmenu .btn {
+	border-radius: 8px;
+	min-width: 120px;
+}

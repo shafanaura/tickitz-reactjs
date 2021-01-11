@@ -1,0 +1,12 @@
+.card-img {
+	border-radius: 24px !important;
+}
+.card-img .card-body .img-fluid {
+	width: 90%;
+	border-radius: 24px !important;
+}
+.card-movie:hover {
+	-webkit-box-shadow: 4px 8px 21px -5px rgba(0, 0, 0, 0.28);
+	box-shadow: 4px 8px 21px -5px rgba(0, 0, 0, 0.28);
+	transition: 0.5s;
+}
