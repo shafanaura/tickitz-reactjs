@@ -4,3 +4,6 @@ div .navbar-expand-lg {
 .navbar .container {
 	height: 60px;
 }
+.bg-gray {
+	background-color: rgb(245, 245, 245);
+}

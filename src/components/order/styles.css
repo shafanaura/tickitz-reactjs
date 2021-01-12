@@ -1,0 +1,23 @@
+.line-screen {
+	height: 8px;
+	background: #9570fe;
+	border-radius: 8px;
+}
+input[type="checkbox"] {
+	width: 0px;
+}
+input[type="checkbox"]:before {
+	margin-top: -13px;
+	content: "";
+	width: 26px;
+	height: 26px;
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	border-radius: 8px;
+	background-color: #d6d8e7;
+}
+input[type="checkbox"]:checked:before {
+	background-color: #9570fe;
+	font-size: 15px;
+}
