@@ -7,6 +7,7 @@ import SignIn from "./pages/register/SignIn";
 import ForgotPassword from "./pages/register/ForgotPassword";
 import MovieDetail from "./pages/movie-detail/MovieDetail";
 import OrderPage from "./pages/order-page/OrderPage";
+import PaymentPage from "./pages/payment-page/PaymentPage";
 
 export default class App extends Component {
 	render() {
@@ -19,6 +20,7 @@ export default class App extends Component {
 					<Route path="/forgot-password" component={ForgotPassword} />
 					<Route path="/movie-detail/:id" component={MovieDetail} />
 					<Route path="/order-page" component={OrderPage} />
+					<Route path="/payment" component={PaymentPage} />
 				</Switch>
 			</BrowserRouter>
 		);
