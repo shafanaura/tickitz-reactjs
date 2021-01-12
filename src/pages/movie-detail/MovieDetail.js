@@ -8,21 +8,20 @@ import ShowtimeComponent from "../../components/showtime/ShowtimeComponent";
 import calendar from "../../assets/images/calendar.svg";
 import map from "../../assets/images/map.svg";
 import "./styles.css";
+import listShowTime from "../../utils/listShowTime";
 
 export default class MovieDetail extends Component {
+	state = {
+		listShowTime: listShowTime,
+	};
 	render() {
 		return (
-			<Container>
-				<NavbarComponent>
-					<Image
-						src="https://cachedimages.podchaser.com/256x256/aHR0cHM6Ly9jcmVhdG9yLWltYWdlcy5wb2RjaGFzZXIuY29tL2EyYjc4MGQxNGU0ODhhMTdjZjhiZTQyYWU3MjZmNWUzLmpwZWc%3D/aHR0cHM6Ly93d3cucG9kY2hhc2VyLmNvbS9pbWFnZXMvbWlzc2luZy1pbWFnZS5wbmc%3D"
-						roundedCircle
-					/>
-				</NavbarComponent>
-				<MovieDetailComponent />
-				<div className="text-center py-5">
-					<p className="text-display-xs-bold">Showtimes and Tickets</p>
-					<Container>
+			<>
+				<NavbarComponent />
+				<Container>
+					<MovieDetailComponent />
+					<div className="text-center py-5">
+						<p className="text-display-xs-bold">Showtimes and Tickets</p>
 						<Row className="justify-content-center">
 							<Col xs={5} md={4} lg={3} className="d-grid pt-4">
 								<Form.Group className="d-flex align-items-center">
@@ -47,18 +46,23 @@ export default class MovieDetail extends Component {
 								</Form.Group>
 							</Col>
 						</Row>
-					</Container>
-				</div>
-				<ShowtimeComponent />
-				<div className="d-flex py-2">
-					<hr className="my-auto flex-grow-1" />
-					<div className="px-3 text-primary">
-						<Link>view more</Link>
 					</div>
-					<hr className="my-auto flex-grow-1" />
-				</div>
+
+					<Row xs={1} md={2} lg={3} className="g-3">
+						{this.state.listShowTime.map((item, index) => {
+							return <ShowtimeComponent data={item} />;
+						})}
+					</Row>
+					<div className="d-flex py-2">
+						<hr className="my-auto flex-grow-1" />
+						<div className="px-3 text-primary">
+							<Link>view more</Link>
+						</div>
+						<hr className="my-auto flex-grow-1" />
+					</div>
+				</Container>
 				<FooterComponent />
-			</Container>
+			</>
 		);
 	}
 }
