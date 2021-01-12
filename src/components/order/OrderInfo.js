@@ -6,7 +6,7 @@ export default class OrderInfo extends Component {
 		return (
 			<Col xs={12} lg={4}>
 				<p className="text-display-xs-bold">Order Info</p>
-				<Card className="border-0 shadow">
+				<Card className="border-0 shadow order-seat">
 					<Card.Body className="pb-0">
 						<div className="text-center">
 							<Image src="../../assets/cineone.png" height={23} alt="" />
@@ -37,7 +37,7 @@ export default class OrderInfo extends Component {
 					</Card.Body>
 					<hr />
 					<Card.Body className="pt-0">
-						<p className="float-start text-link-md">Total Payment</p>
+						<p className="float-left text-link-md">Total Payment</p>
 						<p className="float-end text-display-xs-bold text-primary text-right">
 							$30
 						</p>

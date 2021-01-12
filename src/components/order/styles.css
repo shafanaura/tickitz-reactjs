@@ -3,10 +3,11 @@
 	background: #9570fe;
 	border-radius: 8px;
 }
-input[type="checkbox"] {
-	width: 0px;
+tbody tr td input[type="checkbox"] {
+	/* width: 20px; */
+	margin: 10px;
 }
-input[type="checkbox"]:before {
+tbody tr td input[type="checkbox"]:before {
 	margin-top: -13px;
 	content: "";
 	width: 26px;
@@ -17,7 +18,38 @@ input[type="checkbox"]:before {
 	border-radius: 8px;
 	background-color: #d6d8e7;
 }
-input[type="checkbox"]:checked:before {
-	background-color: #9570fe;
+tbody tr td input[type="checkbox"]:checked:before {
+	background-color: #5f2eea;
 	font-size: 15px;
+}
+.availableBox {
+	width: 26px;
+	height: 26px;
+	border-radius: 8px;
+	background-color: #d6d8e7;
+}
+.selectBox {
+	width: 26px;
+	height: 26px;
+	border-radius: 8px;
+	background-color: #5f2eea;
+}
+.loveBox {
+	width: 26px;
+	height: 26px;
+	border-radius: 8px;
+	background-color: #f589d7;
+}
+.soldBox {
+	width: 26px;
+	height: 26px;
+	border-radius: 8px;
+	background-color: #6e7191;
+}
+.checkout button {
+	border-radius: 16px !important;
+	min-height: 56px;
+}
+.order-seat {
+	border-radius: 24px !important;
 }
