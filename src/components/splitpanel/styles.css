@@ -1,0 +1,10 @@
+.bg-gray {
+	background-color: rgb(245, 245, 245);
+	/* padding-bottom: 100px; */
+}
+.bg-gray .container {
+	padding-top: 30px;
+}
+.bg-gray .container .card {
+	border-radius: 24px !important;
+}
