@@ -1,0 +1,14 @@
+.img-profile {
+	border-radius: 50%;
+}
+.account .nav-link {
+	/* min-width: 145px !important; */
+	margin-bottom: 0px;
+}
+
+.account:focus {
+	border-bottom: 2px solid #5f2eea;
+}
+.btn-update {
+	border-radius: 16px !important;
+}

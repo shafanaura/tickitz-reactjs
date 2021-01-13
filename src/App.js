@@ -9,6 +9,7 @@ import MovieDetail from "./pages/movie-detail/MovieDetail";
 import OrderPage from "./pages/order-page/OrderPage";
 import PaymentPage from "./pages/payment-page/PaymentPage";
 import TicketResult from "./pages/ticket-result-page/TicketResult";
+import ProfilePage from "./pages/profile-page/ProfilePage";
 
 export default class App extends Component {
 	render() {
@@ -23,6 +24,7 @@ export default class App extends Component {
 					<Route path="/order-page" component={OrderPage} />
 					<Route path="/payment" component={PaymentPage} />
 					<Route path="/ticket-result" component={TicketResult} />
+					<Route path="/profile-page" component={ProfilePage} />
 				</Switch>
 			</BrowserRouter>
 		);
