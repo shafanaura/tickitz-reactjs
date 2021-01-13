@@ -28,7 +28,7 @@ export default class PaymentPage extends Component {
 						<ButtonPanel
 							goButtonLeft="/order-page"
 							buttonLeft="Previous step"
-							goButtonRight="/"
+							goButtonRight="/ticket-result"
 							buttonRight="Pay your order"
 						/>
 					}

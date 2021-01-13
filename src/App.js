@@ -8,6 +8,7 @@ import ForgotPassword from "./pages/register/ForgotPassword";
 import MovieDetail from "./pages/movie-detail/MovieDetail";
 import OrderPage from "./pages/order-page/OrderPage";
 import PaymentPage from "./pages/payment-page/PaymentPage";
+import TicketResult from "./pages/ticket-result-page/TicketResult";
 
 export default class App extends Component {
 	render() {
@@ -21,6 +22,7 @@ export default class App extends Component {
 					<Route path="/movie-detail/:id" component={MovieDetail} />
 					<Route path="/order-page" component={OrderPage} />
 					<Route path="/payment" component={PaymentPage} />
+					<Route path="/ticket-result" component={TicketResult} />
 				</Switch>
 			</BrowserRouter>
 		);

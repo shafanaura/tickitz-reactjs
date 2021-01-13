@@ -1,0 +1,57 @@
+.header-info {
+	border-radius: 14px 0px 0px 0px !important;
+	background-color: #5f2eea !important;
+}
+.header-print {
+	border-radius: 0px 14px 0px 0px !important;
+	background-color: #5f2eea !important;
+}
+.bg-primary .container .card {
+	border-radius: 14px !important;
+}
+.info {
+	font-size: 14px;
+	color: #aaaaaa;
+}
+.info-value {
+	font-weight: 600;
+	font-size: 18px;
+	color: #14142b;
+}
+.info-value-price {
+	font-weight: 700;
+	font-size: 26px;
+}
+.left-ticket {
+	border-right: 2px dashed #dadde6;
+}
+.left-ticket::before {
+	content: "";
+	display: block;
+	width: 43px;
+	height: 43px;
+	background-color: rgb(245, 245, 245);
+	position: absolute;
+	top: -15px;
+	right: -22px;
+	z-index: 1;
+	border-radius: 50%;
+}
+.left-ticket::after {
+	content: "";
+	display: block;
+	width: 43px;
+	height: 43px;
+	background-color: rgb(245, 245, 245);
+	position: absolute;
+	bottom: -15px;
+	right: -22px;
+	z-index: 1;
+	border-radius: 50%;
+}
+.sayang {
+	z-index: 1;
+	margin-left: 20px;
+}
+.yoi {
+}
