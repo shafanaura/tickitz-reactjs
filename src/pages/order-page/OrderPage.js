@@ -16,11 +16,14 @@ export default class OrderPage extends Component {
 				<Navbar className="navbar-expand-lg navbar-dark bg-primary">
 					<Container>
 						<Container fluid>
-							{listMovie
+							{/* {listMovie
 								.filter((item) => item.id === "1")
 								.map((item) => (
 									<Link className="text-link-lg text-white">{item.title}</Link>
-								))}
+								))} */}
+							<Link className="text-link-lg text-white">
+								Spider-Man: Homecoming
+							</Link>
 							<Link to="/" className="ml-auto">
 								<Button
 									variant="light"

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Card, Col, Image } from "react-bootstrap";
+import cineone from "../../assets/images/cineone.png";
 
 export default class OrderInfo extends Component {
 	render() {
@@ -9,7 +10,7 @@ export default class OrderInfo extends Component {
 				<Card className="border-0 shadow order-seat">
 					<Card.Body className="pb-0">
 						<div className="text-center">
-							<Image src="../../assets/cineone.png" height={23} alt="" />
+							<Image src={cineone} height={23} alt="" />
 							<p className="text-link-lg pt-2">CineOne21 Cinema</p>
 						</div>
 						<div className="d-flex justify-content-between">
