@@ -86,6 +86,9 @@
 .text-color-placeholder {
 	color: #a0a3bd;
 }
+.text-color-muted {
+	color: #aaaaaa;
+}
 
 /* Property color */
 .property-color-line {
@@ -168,7 +171,7 @@
 
 // change the theme
 $primary: #5f2eea;
-$secondary: #1cc8ee;
+$secondary: #6e7191;
 $success: #00ba88;
 $info: #17a2b8;
 $warning: #f4b740;

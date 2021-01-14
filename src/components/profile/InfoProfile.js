@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Col, Image, Row } from "react-bootstrap";
+import { Card, Col, Image, ProgressBar, Row } from "react-bootstrap";
 import "./styles.css";
 
 function InfoProfile() {
@@ -46,12 +46,15 @@ function InfoProfile() {
 							<Card.Body>
 								<p className="text-white text-display-xs-bold-18">Moviegoers</p>
 								<div className="d-flex align-items-center">
-									<p className="text-link-lg text-white">320</p>
-									<p className="mb-2 pl-1 text-xs-10 text-white">points</p>
+									<p className="text-link-lg text-white m-0">320</p>
+									<p className="mt-4 pl-1 text-xs-10 text-white">points</p>
 								</div>
 							</Card.Body>
 						</Card>
 						<p className="text-center pt-3">180 points become a master</p>
+						<div className="pg-bar">
+							<div className="indicator"></div>
+						</div>
 					</div>
 				</Card.Body>
 			</Card>

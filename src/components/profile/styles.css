@@ -7,8 +7,23 @@
 }
 
 .account:focus {
-	border-bottom: 2px solid #5f2eea;
+	/* border-bottom: 2px solid #5f2eea; */
 }
 .btn-update {
 	border-radius: 16px !important;
+}
+
+.pg-bar {
+	background-color: #f5f6f8;
+	box-shadow: inset 0px 2px 4px rgba(17, 17, 17, 0.16);
+	width: 100%;
+	height: 20px;
+	border-radius: 10px;
+}
+
+.pg-bar .indicator {
+	border-radius: 10px;
+	height: 100%;
+	width: 50%;
+	background-color: #5f2eea;
 }

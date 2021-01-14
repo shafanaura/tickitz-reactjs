@@ -8,7 +8,7 @@ import AccountProfile from "../../components/profile/AccountProfile";
 export default class ProfilePage extends Component {
 	render() {
 		return (
-			<div>
+			<>
 				<NavbarComponent />
 				<div className="bg-gray">
 					<Container>
@@ -19,7 +19,7 @@ export default class ProfilePage extends Component {
 					</Container>
 				</div>
 				<FooterComponent />
-			</div>
+			</>
 		);
 	}
 }

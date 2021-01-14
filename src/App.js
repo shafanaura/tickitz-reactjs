@@ -10,6 +10,8 @@ import OrderPage from "./pages/order-page/OrderPage";
 import PaymentPage from "./pages/payment-page/PaymentPage";
 import TicketResult from "./pages/ticket-result-page/TicketResult";
 import ProfilePage from "./pages/profile-page/ProfilePage";
+import AdminPage from "./pages/admin-page/AdminPage";
+import Error from "./pages/Error";
 
 export default class App extends Component {
 	render() {
@@ -25,6 +27,8 @@ export default class App extends Component {
 					<Route path="/payment" component={PaymentPage} />
 					<Route path="/ticket-result" component={TicketResult} />
 					<Route path="/profile-page" component={ProfilePage} />
+					<Route path="/admin-page" component={AdminPage} />
+					<Route path="*" component={Error} />
 				</Switch>
 			</BrowserRouter>
 		);
