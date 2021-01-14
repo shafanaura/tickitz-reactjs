@@ -7,7 +7,7 @@
 	background-color: #5f2eea !important;
 }
 .bg-primary .container .card {
-	border-radius: 14px !important;
+	/* border-radius: 14px !important; */
 }
 .info {
 	font-size: 14px;
