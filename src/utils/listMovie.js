@@ -1,4 +1,4 @@
-export default [
+const listMovie = [
 	{
 		id: 1,
 		img: "https://picfiles.alphacoders.com/148/148651.jpg",
@@ -72,3 +72,4 @@ export default [
 		synopsis: "",
 	},
 ];
+export default listMovie;

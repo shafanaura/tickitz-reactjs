@@ -47,16 +47,19 @@ section {
 
 @media (max-width: 767.98px) {
 	.text-display-xs {
-		font-size: 16px;
+		font-size: 16px !important;
 	}
 	.text-display-lg-bold-56 {
-		font-size: 36px;
+		font-size: 36px !important;
 	}
 	.img-resize {
-		height: 200px;
+		height: 200px !important;
 	}
 }
 @media (max-width: 575.98px) {
+	.text-display-xs-bold {
+		font-size: 16px !important;
+	}
 	.img-gradient img {
 		width: 94.82px;
 		height: 311.98px;

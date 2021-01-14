@@ -1,4 +1,4 @@
-export default [
+const listComingMovie = [
 	{
 		id: 1,
 		img: "https://pbs.twimg.com/media/EPKOTsOX0AAaYeN.jpg",
@@ -71,3 +71,4 @@ export default [
 		synopsis: "",
 	},
 ];
+export default listComingMovie;

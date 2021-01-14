@@ -23,7 +23,7 @@ export default class MovieDetail extends Component {
 					<div className="text-center py-5">
 						<p className="text-display-xs-bold">Showtimes and Tickets</p>
 						<Row className="justify-content-center">
-							<Col xs={5} md={4} lg={3} className="d-grid pt-4">
+							<Col lg={3} md={5} xs={12} className="d-grid pt-4">
 								<Form.Group className="d-flex align-items-center">
 									<Image src={calendar} className="position-absolute pl-3" />
 									<Form.Control
@@ -34,7 +34,7 @@ export default class MovieDetail extends Component {
 								</Form.Group>
 							</Col>
 
-							<Col xs={5} md={4} lg={3} className="d-grid pt-4">
+							<Col lg={3} md={5} xs={12} className="d-grid pt-4">
 								<Form.Group className="d-flex align-items-center">
 									<Image src={map} className="position-absolute pl-3" />
 									<Form.Control as="select" className="border-0 pl-5 pick">

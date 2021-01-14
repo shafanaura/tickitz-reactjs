@@ -13,7 +13,7 @@ function TicketComponent() {
 						<Card>
 							<Row>
 								{/* Left */}
-								<Col xs={8} className="pr-0 left-ticket">
+								<Col md={8} xs={12} className="pr-0 left-ticket">
 									<Card.Header className="header-info">
 										<svg
 											width="126"
@@ -84,7 +84,7 @@ function TicketComponent() {
 									</Card.Body>
 								</Col>
 								{/* Right */}
-								<Col xs={4} className="pl-0">
+								<Col md={4} xs={12} className="pl-0">
 									<Card.Header className="header-print text-center">
 										<svg
 											width="126"
@@ -166,10 +166,70 @@ function TicketComponent() {
 						{/* Button */}
 						<div className="pt-5 d-flex justify-content-center align-items-center">
 							<Button variant="outline-dark" className="col-2 mr-2">
+								<svg
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+									className="mr-2"
+								>
+									<path
+										d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15"
+										stroke="#4E4B66"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+									<path
+										d="M7 10L12 15L17 10"
+										stroke="#4E4B66"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+									<path
+										d="M12 15V3"
+										stroke="#4E4B66"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
 								Download
 							</Button>
 
 							<Button variant="outline-dark" className="col-2 ml-2">
+								<svg
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+									className="mr-2"
+								>
+									<path
+										d="M6 9V2H18V9"
+										stroke="#4E4B66"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+									<path
+										d="M6 18H4C3.46957 18 2.96086 17.7893 2.58579 17.4142C2.21071 17.0391 2 16.5304 2 16V11C2 10.4696 2.21071 9.96086 2.58579 9.58579C2.96086 9.21071 3.46957 9 4 9H20C20.5304 9 21.0391 9.21071 21.4142 9.58579C21.7893 9.96086 22 10.4696 22 11V16C22 16.5304 21.7893 17.0391 21.4142 17.4142C21.0391 17.7893 20.5304 18 20 18H18"
+										stroke="#4E4B66"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+									<path
+										d="M18 14H6V22H18V14Z"
+										stroke="#4E4B66"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
 								Print
 							</Button>
 						</div>

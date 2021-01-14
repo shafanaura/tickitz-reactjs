@@ -9,10 +9,10 @@ export default class AccountProfile extends Component {
 	render() {
 		return (
 			<Router>
-				<Col xs={8} className="pb-5">
+				<Col xs={12} md={8} className="pb-5">
 					<Card bg="light" variant="light">
 						<Card.Body className="d-flex">
-							<Link to="/profile-page" className="pr-4 account">
+							<Link to="/profile-page" className="pr-4 ">
 								Account Settings
 							</Link>
 							<Link to="/profile-page/order-history">Order History</Link>

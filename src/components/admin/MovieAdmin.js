@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Col, Container, Form, Image, Row } from "react-bootstrap";
+import PremiereLocation from "./PremiereLocation";
 
 function MovieAdmin() {
 	return (
@@ -80,6 +81,8 @@ lives with his Aunt May, | "
 					</Card.Body>
 				</Card>
 			</Col>
+			{/* Other col */}
+			<PremiereLocation />
 		</Row>
 	);
 }

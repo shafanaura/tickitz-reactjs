@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Card, Col, Row, Image, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import listShowTime from "../../utils/listShowTime";
 import "./styles.css";
 export default class ShowtimeComponent extends Component {
 	render() {

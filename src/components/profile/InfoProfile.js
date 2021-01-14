@@ -4,7 +4,7 @@ import "./styles.css";
 
 function InfoProfile() {
 	return (
-		<Col xs={4}>
+		<Col xs={12} md={4}>
 			<Card>
 				<Card.Body>
 					<div className="d-flex justify-content-between">

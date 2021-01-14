@@ -22,7 +22,9 @@ export default class OrderHistory extends Component {
 						</div>
 						<hr />
 						<div className="d-flex justify-content-between align-items-center">
-							<Button variant="success col-3">Ticket in active</Button>
+							<Button variant="success col-3 ticket-btn">
+								Ticket in active
+							</Button>
 							<select
 								defaultValue="Show Details"
 								className="text-md text-color-muted border-0 pr-3"
@@ -50,7 +52,7 @@ export default class OrderHistory extends Component {
 						</div>
 						<hr />
 						<div className="d-flex justify-content-between align-items-center">
-							<Button variant="secondary col-3">Ticket used</Button>
+							<Button variant="secondary col-3 ticket-btn">Ticket used</Button>
 							<select
 								defaultValue="Show Details"
 								className="text-md text-color-muted border-0 pr-3"
@@ -78,7 +80,7 @@ export default class OrderHistory extends Component {
 						</div>
 						<hr />
 						<div className="d-flex justify-content-between align-items-center">
-							<Button variant="secondary col-3">Ticket used</Button>
+							<Button variant="secondary col-3 ticket-btn">Ticket used</Button>
 							<select
 								defaultValue="Show Details"
 								className="text-md text-color-muted border-0 pr-3"

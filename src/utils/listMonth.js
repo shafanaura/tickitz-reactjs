@@ -1,4 +1,4 @@
-export default [
+const listMonth = [
 	{
 		id: 1,
 		month: "January",
@@ -48,3 +48,4 @@ export default [
 		month: "December",
 	},
 ];
+export default listMonth;

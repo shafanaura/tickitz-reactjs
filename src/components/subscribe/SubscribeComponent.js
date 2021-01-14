@@ -12,14 +12,14 @@ function SubscribeComponent() {
 				<p className="text-primary text-link-lg-48 ">Moviegoers</p>
 				<Form>
 					<Form.Row>
-						<Col xs={8}>
+						<Col md={8} xs={12}>
 							<Form.Control
 								type="email"
 								placeholder="Type your email"
 								className="subMail"
 							/>
 						</Col>
-						<Col>
+						<Col md={4} xs={12}>
 							<Button className="subMail" variant="primary" type="submit" block>
 								Join now
 							</Button>
