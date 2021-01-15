@@ -7,7 +7,7 @@ const listShowTime = [
 		img: ebv,
 		title: "ebv.id",
 		address: "Whatever street No.12, South Purwokerto",
-		price: 10,
+		price: 15,
 		listTime: [
 			{
 				id: 1,
@@ -44,7 +44,7 @@ const listShowTime = [
 		img: cineone,
 		title: "CineOne21",
 		address: "Downcare street No. 21, East Purwokerto",
-		price: 10,
+		price: 12,
 		listTime: [
 			{
 				id: 1,

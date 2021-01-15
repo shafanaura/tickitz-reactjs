@@ -1,21 +1,16 @@
 import React, { Component } from "react";
 import { Col, Container, Row, Image, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import ComingMovie from "../../components/comingmovie/ComingMovie";
 import ComingMovies from "../../components/comingmovie/ComingMovie";
 import FooterComponent from "../../components/footer/FooterComponent";
 import NavbarAuth from "../../components/navbar/NavbarAuth";
 import ShowingComponent from "../../components/showing/ShowingComponent";
 import SubscribeComponent from "../../components/subscribe/SubscribeComponent";
-import listComingMovie from "../../utils/listComingMovie";
-import listMovie from "../../utils/listMovie";
 import listMonth from "../../utils/listMonth";
 import "./styles.css";
 
 class HomePage extends Component {
-	state = {
-		listMovie: listMovie,
-		listComingMovie: listComingMovie,
-	};
 	render() {
 		return (
 			<div>
@@ -66,54 +61,10 @@ class HomePage extends Component {
 						</Row>
 					</section>
 					<section>
-						<Row>
-							<Col>
-								<p className="text-display-xs-bold bottom-line float-left">
-									Now Showing
-								</p>
-							</Col>
-							<Col>
-								<Link to="#">
-									<p className="text-primary float-right">view all</p>
-								</Link>
-							</Col>
-						</Row>
-						<div className="scrollmenu text-center">
-							{this.state.listMovie.map((item, index) => {
-								return <ShowingComponent data={item} />;
-							})}
-						</div>
+						<ShowingComponent />
 					</section>
 					<section>
-						<Row>
-							<Col>
-								<p className="text-display-xs-bold float-left">
-									Upcoming Movies
-								</p>
-							</Col>
-							<Col>
-								<Link to="#">
-									<p className="text-primary float-right">view all</p>
-								</Link>
-							</Col>
-						</Row>
-						<div class="scrollmenu ">
-							{listMonth.map((item) => {
-								return (
-									<Button
-										variant="outline-primary"
-										className="scroll btn-month mr-1"
-									>
-										{item.month}
-									</Button>
-								);
-							})}
-						</div>
-						<div className="scrollmenu text-center">
-							{this.state.listComingMovie.map((item, index) => {
-								return <ComingMovies data={item} />;
-							})}
-						</div>
+						<ComingMovie />
 					</section>
 					<section>
 						<SubscribeComponent />

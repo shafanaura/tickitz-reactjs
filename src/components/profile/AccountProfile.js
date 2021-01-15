@@ -22,7 +22,7 @@ export default class AccountProfile extends Component {
 						<Route exact path="/profile-page">
 							<DetailInfo />
 						</Route>
-						<Route exact path="/profile-page/order-history">
+						<Route path="/profile-page/order-history">
 							<OrderHistory />
 						</Route>
 					</Switch>

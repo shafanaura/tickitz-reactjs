@@ -1,29 +1,37 @@
 import React, { Component } from "react";
 import { Button, Col, Container, Image, Navbar, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import NavbarComponent from "../../components/navbar/NavbarComponent";
 import OrderInfo from "../../components/order/OrderInfo";
 import OrderSeat from "../../components/order/OrderSeat";
 import FooterComponent from "../../components/footer/FooterComponent";
-import listMovie from "../../utils/listMovie";
 import "./styles.css";
+import listShowTime from "../../utils/listShowTime";
+import listMovie from "../../utils/listMovie";
 
-export default class OrderPage extends Component {
+class OrderPage extends Component {
+	state = {
+		cinema: {},
+		movie: {},
+		selectedSeat: [],
+	};
+	componentDidMount() {
+		const { movieId } = this.props.location.state;
+		const { id: cinemaId } = this.props.match.params;
+		this.setState({
+			cinema: listShowTime.filter((item) => item.id === Number(cinemaId))[0],
+			movie: listMovie.filter((item) => item.id === Number(movieId))[0],
+		});
+	}
 	render() {
+		const { cinema, movie } = this.state;
 		return (
 			<div>
 				<NavbarComponent />
 				<Navbar className="navbar-expand-lg navbar-dark bg-primary">
 					<Container>
 						<Container fluid>
-							{/* {listMovie
-								.filter((item) => item.id === "1")
-								.map((item) => (
-									<Link className="text-link-lg text-white">{item.title}</Link>
-								))} */}
-							<Link className="text-link-lg text-white">
-								Spider-Man: Homecoming
-							</Link>
+							<Link className="text-link-lg text-white">{movie.title}</Link>
 							<Link to="/" className="ml-auto">
 								<Button
 									variant="light"
@@ -39,7 +47,7 @@ export default class OrderPage extends Component {
 					<Container>
 						<Row>
 							<OrderSeat />
-							<OrderInfo />
+							<OrderInfo data={movie} />
 						</Row>
 					</Container>
 				</div>
@@ -48,3 +56,4 @@ export default class OrderPage extends Component {
 		);
 	}
 }
+export default withRouter(OrderPage);
