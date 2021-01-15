@@ -10,11 +10,7 @@ function ShowtimeAdmin() {
 				<Card.Body>
 					<Form.Group className="d-flex align-items-center">
 						<Image src={calendar} className="position-absolute pl-3" />
-						<Form.Control
-							type="date"
-							id="datepicker"
-							className="border-0 pl-5 pick"
-						/>
+						<Form.Control type="date" className="border-0 pl-5 pick" />
 					</Form.Group>
 					<Row>
 						<Col md={3} className="pt-2">

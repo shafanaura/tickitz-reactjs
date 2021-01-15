@@ -56,4 +56,4 @@ class OrderPage extends Component {
 		);
 	}
 }
-export default withRouter(OrderPage);
+export default OrderPage;

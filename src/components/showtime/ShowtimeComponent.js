@@ -18,8 +18,8 @@ class ShowtimeComponent extends Component {
 							<Image src={data.img} width={100} alt="" />
 						</Col>
 						<Col xs={8}>
-							<p className="text-link-lg m-0">{data.title}</p>
-							<p className="text-300-12 m-0">{data.address}</p>
+							<p className="text-link-lg text-left m-0">{data.title}</p>
+							<p className="text-300-12 text-left m-0">{data.address}</p>
 						</Col>
 					</Row>
 				</Card.Body>

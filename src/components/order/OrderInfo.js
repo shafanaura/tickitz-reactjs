@@ -11,13 +11,11 @@ export default class OrderInfo extends Component {
 					<Card.Body className="pb-0">
 						<div className="text-center">
 							<Image src={cineone} height={23} alt="" />
-							<p className="text-link-lg pt-2">{this.props.data.title}</p>
+							<p className="text-link-lg pt-2"></p>
 						</div>
 						<div className="d-flex justify-content-between">
 							<p className="text-xs text-color-label">Movie selected</p>
-							<p className="text-right text-link-xs text-color-title">
-								{this.props.data.title}
-							</p>
+							<p className="text-right text-link-xs text-color-title"></p>
 						</div>
 						<div className="d-flex justify-content-between">
 							<p className="text-xs text-color-label">Tuesday, 07 July 2020</p>
