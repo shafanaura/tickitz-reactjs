@@ -11,7 +11,9 @@ import PaymentPage from "./pages/payment-page/PaymentPage";
 import TicketResult from "./pages/ticket-result-page/TicketResult";
 import ProfilePage from "./pages/profile-page/ProfilePage";
 import AdminPage from "./pages/admin-page/AdminPage";
+import AdminPanel from "./pages/admin-panel/AdminPanel";
 import Error from "./pages/Error";
+import PrivateRoute from "./components/privateRoute/PrivateRoute";
 
 export default class App extends Component {
 	render() {
@@ -20,14 +22,20 @@ export default class App extends Component {
 				<Switch>
 					<Route path="/" exact component={HomePage} />
 					<Route path="/sign-up" component={SignUp} />
-					<Route path="/sign-in" component={SignIn} />
+					<Route path="/login" component={SignIn} />
 					<Route path="/forgot-password" component={ForgotPassword} />
+					{/* <PrivateRoute
+						path="/movie-detail/:id"
+						privateComponent={MovieDetail}
+					/> */}
 					<Route path="/movie-detail/:id" component={MovieDetail} />
 					<Route path="/order-page" component={OrderPage} />
 					<Route path="/payment" component={PaymentPage} />
 					<Route path="/ticket-result" component={TicketResult} />
 					<Route path="/profile-page" component={ProfilePage} />
 					<Route path="/admin-page" component={AdminPage} />
+					{/* <Route path="/admin-panel" component={AdminPanel} /> */}
+					<PrivateRoute path="/admin-panel" privateComponent={AdminPanel} />
 					<Route path="*" component={Error} />
 				</Switch>
 			</BrowserRouter>

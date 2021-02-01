@@ -1,13 +1,39 @@
 import React, { Component } from "react";
-import { Row, Col, Image, Button, Form } from "react-bootstrap";
+import { Row, Col, Image, Button, Form, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Google, Facebook } from "react-bootstrap-icons";
+import { login, autoLogin } from "../../redux/actions/auth";
+import { connect } from "react-redux";
+
 import LeftRegister from "../../components/register/LeftRegister";
 import RightRegister from "../../components/register/RightRegister";
 import tickitz_white from "../../assets/images/tickitz-white.svg";
 import "./styles.css";
 
-export default class SignIn extends Component {
+class SignIn extends Component {
+	state = {
+		email: "",
+		password: "",
+	};
+	submitData = (e) => {
+		e.preventDefault();
+		const { email, password } = this.state;
+		this.props.login(email, password);
+	};
+	componentDidUpdate() {
+		if (this.props.auth.token) {
+			const { from = null } = this.props.location.state;
+			this.props.history.push((from && from.pathname) || "/");
+		}
+	}
+	componentDidMount() {
+		const token = localStorage.getItem("token");
+		if (token) {
+			this.props.autoLogin(token);
+		}
+	}
+	changeText = (event) => {
+		this.setState({ [event.target.name]: event.target.value });
+	};
 	render() {
 		return (
 			<Row>
@@ -24,21 +50,32 @@ export default class SignIn extends Component {
 					<p class="text-md opacity-70 m-0 pb-4">
 						Sign in with your data that you entered during your registration
 					</p>
-					<Form>
+					<Form onSubmit={this.submitData}>
 						<Form.Group controlId="formBasicEmail">
+							{this.props.auth.errorMsg !== "" && (
+								<Alert variant="danger">{this.props.auth.errorMsg}</Alert>
+							)}
 							<Form.Label>Email</Form.Label>
-							<Form.Control type="email" placeholder="Write your email" />
+							<Form.Control
+								onChange={(event) => this.changeText(event)}
+								name="email"
+								type="email"
+								placeholder="Write your email"
+							/>
 						</Form.Group>
 
 						<Form.Group controlId="formBasicPassword">
 							<Form.Label>Password</Form.Label>
-							<Form.Control type="password" placeholder="Write your password" />
+							<Form.Control
+								onChange={(event) => this.changeText(event)}
+								name="password"
+								type="password"
+								placeholder="Write your password"
+							/>
 						</Form.Group>
-						<Link to="/">
-							<Button variant="primary" type="submit" block>
-								Sign in
-							</Button>
-						</Link>
+						<Button variant="primary" type="submit" block>
+							Sign in
+						</Button>
 						<p className="text-center pt-3">
 							Forgot your password?
 							<Link to="/forgot-password"> Reset now</Link>
@@ -104,3 +141,10 @@ export default class SignIn extends Component {
 		);
 	}
 }
+
+const mapStateToProps = (state) => ({
+	auth: state.auth,
+});
+const mapDispatchToProps = { login, autoLogin };
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

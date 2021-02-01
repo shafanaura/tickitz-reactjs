@@ -92,7 +92,7 @@ class SignUp extends Component {
 						</Button>
 						<p className="text-center pt-3">
 							Do you already have an account?
-							<Link to="/sign-in"> Log in</Link>
+							<Link to="/login"> Log in</Link>
 						</p>
 						<div className="d-flex py-2">
 							<hr className="my-auto flex-grow-1" />
