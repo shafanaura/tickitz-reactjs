@@ -1,15 +1,22 @@
 import React, { Component } from "react";
 import { Card, Col, Image, Row } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
+import http from "../../helpers/http";
 import listMovie from "../../utils/listMovie";
 import "./styles.css";
 
 class ShowingComponent extends Component {
 	state = {
-		listMovie,
+		movies: [],
 	};
+	async componentDidMount() {
+		const response = await http().get("movies");
+		this.setState({
+			movies: response.data.results,
+		});
+	}
 	render() {
-		const { listMovie } = this.state;
+		const { movies } = this.state;
 		return (
 			<div>
 				<Row>
@@ -25,12 +32,15 @@ class ShowingComponent extends Component {
 					</Col>
 				</Row>
 				<div className="scrollmenu text-center">
-					{listMovie.map((item, index) => {
+					{movies.map((item, index) => {
 						return (
 							<Link to={`/movie-detail/${item.id}`} className="link">
 								<Card className="scroll card mr-4">
 									<Card.Body className="card-body">
-										<Image src={item.img} className="img-fluid img-resize" />
+										<Image
+											src={item.picture}
+											className="img-fluid img-resize"
+										/>
 									</Card.Body>
 								</Card>
 							</Link>

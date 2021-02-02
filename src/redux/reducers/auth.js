@@ -17,6 +17,16 @@ const authReducer = (state = initialState, action) => {
 				errorMsg: action.payload,
 			};
 		}
+		case "CREATE_MOVIE": {
+			const task = [...state.task];
+			task.push({
+				title: action.payload.title,
+			});
+			return {
+				...state,
+				task,
+			};
+		}
 		default: {
 			return {
 				...state,

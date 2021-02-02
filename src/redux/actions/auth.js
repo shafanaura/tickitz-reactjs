@@ -26,11 +26,7 @@ export const login = (email, password) => {
 	};
 };
 
-export const autoLogin = (payload) => {
-	return (dispatch) => {
-		dispatch({
-			type: "LOGIN",
-			payload,
-		});
-	};
-};
+export const autoLogin = (payload) => ({
+	type: "LOGIN",
+	payload,
+});

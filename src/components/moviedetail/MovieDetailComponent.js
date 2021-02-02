@@ -7,17 +7,27 @@ import calendar from "../../assets/images/calendar.svg";
 import map from "../../assets/images/map.svg";
 import "./styles.css";
 import ShowtimeComponent from "../showtime/ShowtimeComponent";
+import http from "../../helpers/http";
+import Moment from "react-moment";
+import moment from "moment";
 
 class MovieDetailComponent extends Component {
 	state = {
 		listShowTime,
 		movie: {},
 	};
-	componentDidMount() {
+	async componentDidMount() {
 		const { id } = this.props.match.params;
-		const data = listMovie.filter((item) => item.id === Number(id))[0];
-		this.setState({ movie: data });
+		const response = await http().get(`movies/${id}`);
+		this.setState({
+			movie: response.data.results,
+		});
 	}
+	// componentDidMount() {
+	// 	const { id } = this.props.match.params;
+	// 	const data = listMovie.filter((item) => item.id === Number(id))[0];
+	// 	this.setState({ movie: data });
+	// }
 	render() {
 		const { listShowTime, movie } = this.state;
 		const { id } = this.props.match.params;
@@ -27,7 +37,7 @@ class MovieDetailComponent extends Component {
 					<Col md={4} xs={12}>
 						<Card className="text-center mx-auto card-img">
 							<Card.Body>
-								<Image src={movie.img} className="img-fluid" />
+								<Image src={movie.picture} className="img-fluid" />
 							</Card.Body>
 						</Card>
 					</Col>
@@ -38,7 +48,9 @@ class MovieDetailComponent extends Component {
 							<Col xs={6} lg={4}>
 								<div className="flex-column justify-content-center d-flex">
 									<p className="text-xs text-muted m-0">Release date</p>
-									<p className="text-sm pt-1">{movie.release}</p>
+									<p className="text-sm pt-1">
+										<Moment format="D MMMM YYYY">{movie.releaseDate}</Moment>
+									</p>
 								</div>
 							</Col>
 							<Col xs={6} lg={8}>
@@ -52,7 +64,9 @@ class MovieDetailComponent extends Component {
 							<Col xs={6} lg={4}>
 								<div className="flex-column justify-content-center d-flex">
 									<p className="text-xs text-muted m-0">Duration</p>
-									<p className="text-sm pt-1">{movie.duration}</p>
+									<p className="text-sm pt-1">
+										{moment.duration(movie.duration).format("h[h] m[min]")}
+									</p>
 								</div>
 							</Col>
 							<Col xs={6} lg={8}>
