@@ -24,17 +24,12 @@ export default class App extends Component {
 					<Route path="/sign-up" component={SignUp} />
 					<Route path="/login" component={SignIn} />
 					<Route path="/forgot-password" component={ForgotPassword} />
-					{/* <PrivateRoute
-						path="/movie-detail/:id"
-						privateComponent={MovieDetail}
-					/> */}
 					<Route path="/movie-detail/:id" component={MovieDetail} />
 					<Route path="/order-page" component={OrderPage} />
 					<Route path="/payment" component={PaymentPage} />
 					<Route path="/ticket-result" component={TicketResult} />
 					<Route path="/profile-page" component={ProfilePage} />
 					<Route path="/admin-page" component={AdminPage} />
-					{/* <Route path="/admin-panel" component={AdminPanel} /> */}
 					<PrivateRoute path="/admin-panel" privateComponent={AdminPanel} />
 					<Route path="*" component={Error} />
 				</Switch>

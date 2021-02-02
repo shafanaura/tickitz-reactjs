@@ -14,8 +14,28 @@ import LeftRegister from "../../components/register/LeftRegister";
 import RightRegister from "../../components/register/RightRegister";
 import tickitz_white from "../../assets/images/tickitz-white.svg";
 import "./styles.css";
+import { connect } from "react-redux";
+import { register } from "../../redux/actions/auth";
 
 class SignUp extends Component {
+	state = {
+		email: "",
+		password: "",
+	};
+	submitData = (e) => {
+		e.preventDefault();
+		const { email, password } = this.state;
+		this.props.register(email, password);
+	};
+	componentDidUpdate() {
+		if (this.props.auth.token) {
+			const { from = null } = this.props.location.state;
+			this.props.history.push((from && from.pathname) || "/");
+		}
+	}
+	changeText = (event) => {
+		this.setState({ [event.target.name]: event.target.value });
+	};
 	render() {
 		return (
 			<Row>
@@ -71,15 +91,25 @@ class SignUp extends Component {
 				</LeftRegister>
 				<RightRegister>
 					<p class="text-link-lg-26 pb-3 pt-5">Fill your additional details</p>
-					<Form>
+					<Form onSubmit={this.submitData}>
 						<Form.Group controlId="formBasicEmail">
 							<Form.Label>Email</Form.Label>
-							<Form.Control type="email" placeholder="Write your email" />
+							<Form.Control
+								onChange={(event) => this.changeText(event)}
+								name="email"
+								type="email"
+								placeholder="Write your email"
+							/>
 						</Form.Group>
 
 						<Form.Group controlId="formBasicPassword">
 							<Form.Label>Password</Form.Label>
-							<Form.Control type="password" placeholder="Write your password" />
+							<Form.Control
+								onChange={(event) => this.changeText(event)}
+								name="password"
+								type="password"
+								placeholder="Write your password"
+							/>
 						</Form.Group>
 						<Form.Group controlId="formBasicCheckbox">
 							<Form.Check
@@ -156,4 +186,9 @@ class SignUp extends Component {
 	}
 }
 
-export default SignUp;
+const mapStateToProps = (state) => ({
+	auth: state.auth,
+});
+const mapDispatchToProps = { register };
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import http from "../../helpers/http";
 
 import {
 	Button,
@@ -9,11 +8,14 @@ import {
 	Navbar,
 	Row,
 	Nav,
-	Table,
-	Form,
 } from "react-bootstrap";
 import { Switch, Route, Link } from "react-router-dom";
-import { connect } from "react-redux";
+import CreateMovie from "../../containers/createMovie.container";
+import GenreTable from "../../containers/genreTable.container";
+import CreateGenre from "../../containers/createGenre.container";
+import MovieTable from "../../containers/movieTable.container";
+import EditMovie from "../../containers/editMovie.container";
+import EditGenre from "../../containers/editGenre.container";
 
 export default class AdminPanel extends Component {
 	render() {
@@ -38,31 +40,25 @@ export default class AdminPanel extends Component {
 					<Row>
 						<Col md={3}>
 							<Nav className="flex-column">
-								<Nav.Item className="d-flex flex-row align-items-center">
-									<Link className="nav-link" to="/admin-panel/profile">
-										Profile
-									</Link>
-								</Nav.Item>
-								<Nav.Item className="d-flex flex-row align-items-center">
-									<Link className="nav-link" to="/admin-panel/settings">
-										Settings
-									</Link>
-								</Nav.Item>
-								<Nav.Item className="d-flex flex-row align-items-center">
-									<Link className="nav-link" to="/admin-panel/manage_user">
-										Manage User
-									</Link>
-								</Nav.Item>
-								<Nav.Item className="d-flex flex-row align-items-center">
-									<Link className="nav-link" to="/admin-panel/manage_movie">
-										Manage Movie
-									</Link>
-								</Nav.Item>
-								<Nav.Item className="d-flex flex-row align-items-center">
-									<Link className="nav-link" to="/admin-panel/manage_genre">
-										Manage Genre
-									</Link>
-								</Nav.Item>
+								<Link className="nav-link" to="/admin-panel/profile">
+									Profile
+								</Link>
+
+								<Link className="nav-link" to="/admin-panel/settings">
+									Settings
+								</Link>
+
+								<Link className="nav-link" to="/admin-panel/manage_user">
+									Manage User
+								</Link>
+
+								<Link className="nav-link" to="/admin-panel/manage_movie">
+									Manage Movie
+								</Link>
+
+								<Link className="nav-link" to="/admin-panel/manage_genre">
+									Manage Genre
+								</Link>
 							</Nav>
 						</Col>
 						<Col md={9}>
@@ -81,9 +77,23 @@ export default class AdminPanel extends Component {
 								</Route>
 								<Route
 									path="/admin-panel/manage_movie/edit/:id"
-									component={WrapperEditMovie}
+									component={EditMovie}
 								/>
-								<Route path="/admin-panel/manage_genre">Manage Genre</Route>
+								<Route
+									path="/admin-panel/manage_movie/add"
+									component={CreateMovie}
+								/>
+								<Route path="/admin-panel/manage_genre" exact>
+									<GenreTable />
+								</Route>
+								<Route
+									path="/admin-panel/manage_genre/edit/:id"
+									component={EditGenre}
+								/>
+								<Route
+									path="/admin-panel/manage_genre/add"
+									component={CreateGenre}
+								/>
 							</Switch>
 						</Col>
 					</Row>
@@ -92,110 +102,3 @@ export default class AdminPanel extends Component {
 		);
 	}
 }
-
-class MovieTable extends Component {
-	state = {
-		movies: [],
-	};
-	async componentDidMount() {
-		const response = await http().get("movies");
-		this.setState({
-			movies: response.data.results,
-		});
-	}
-	render() {
-		const { movies } = this.state;
-		console.log(movies);
-		return (
-			<Table striped bordered hover>
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Title</th>
-						<th>Option</th>
-					</tr>
-				</thead>
-				<tbody>
-					{movies.map((movie) => {
-						return (
-							<tr key={String(movie.id)}>
-								<td>{movie.id}</td>
-								<td>{movie.title}</td>
-								<td>
-									<Link
-										to={`/admin-panel/manage_movie/edit/${movie.id}`}
-										className="btn btn-sm btn-warning"
-									>
-										Edit
-									</Link>{" "}
-									<Link
-										to={`/admin-panel/manage_movie/delete/${movie.id}`}
-										className="btn btn-sm btn-danger"
-									>
-										Delete
-									</Link>
-								</td>
-							</tr>
-						);
-					})}
-				</tbody>
-			</Table>
-		);
-	}
-}
-
-class EditMovie extends Component {
-	state = {
-		movie: {},
-	};
-	async componentDidMount() {
-		const { id } = this.props.match.params;
-		const response = await http().get(`movies/${id}`);
-		this.setState({
-			movie: response.data.results,
-		});
-	}
-	saveData = async (e) => {
-		e.preventDefault();
-		const { id } = this.props.match.params;
-		const { title } = this.state.movie;
-		const data = new URLSearchParams();
-		data.append("title", title);
-		const response = await http(this.props.auth.token).patch(
-			`movies/${id}`,
-			data,
-		);
-		window.alert(response.data.message);
-	};
-	changeText = (event) => {
-		const { movie } = this.state;
-		this.setState({
-			movie: {
-				...movie,
-				[event.target.name]: event.target.value,
-			},
-		});
-	};
-	render() {
-		const { movie } = this.state;
-		return (
-			<React.Fragment>
-				{Object.keys(movie).length > 0 && (
-					<Form onSubmit={this.saveData}>
-						<Form.Control
-							type="text"
-							name="title"
-							onChange={this.changeText}
-							defaultValue={movie.title}
-						/>
-						<Button type="submit" variant="warning">
-							Save
-						</Button>
-					</Form>
-				)}
-			</React.Fragment>
-		);
-	}
-}
-
-const WrapperEditMovie = connect((state) => ({ auth: state.auth }))(EditMovie);

@@ -17,14 +17,16 @@ const authReducer = (state = initialState, action) => {
 				errorMsg: action.payload,
 			};
 		}
-		case "CREATE_MOVIE": {
-			const task = [...state.task];
-			task.push({
-				title: action.payload.title,
-			});
+		case "REGISTER": {
 			return {
 				...state,
-				task,
+				token: action.payload,
+			};
+		}
+		case "SET_REGISTER_MESSAGE": {
+			return {
+				...state,
+				errorMsg: action.payload,
 			};
 		}
 		default: {
