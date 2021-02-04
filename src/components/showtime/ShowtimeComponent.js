@@ -1,9 +1,16 @@
 import React, { Component } from "react";
 import { Card, Col, Row, Image, Button } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
+import http from "../../helpers/http";
 import "./styles.css";
 
 class ShowtimeComponent extends Component {
+	state = {
+		showtimes: {},
+	};
+	async componentDidMount() {
+		const response = await http().get("showtimes");
+	}
 	bookNow = (id) => {
 		const { history, movieId } = this.props;
 		history.push(`/order-page/${id}`, { movieId });
@@ -39,7 +46,7 @@ class ShowtimeComponent extends Component {
 				</Card.Body>
 				<Card.Body className="pt-0 d-flex justify-content-between">
 					<Button
-						onClick={() => this.bookNow(data.id)}
+						// onClick={() => this.bookNow(data.id)}
 						variant="primary"
 						className="btn-nav shadow"
 					>

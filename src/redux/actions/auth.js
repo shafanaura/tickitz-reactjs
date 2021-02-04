@@ -37,7 +37,6 @@ export const register = (email, password) => {
 				payload: "",
 			});
 			const results = await http().post(`auth/register`, params);
-			localStorage.setItem("token", results.data.token);
 			dispatch({
 				type: "REGISTER",
 				payload: results.data.token,

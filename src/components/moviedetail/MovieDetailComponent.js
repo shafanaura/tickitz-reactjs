@@ -12,10 +12,23 @@ import Moment from "react-moment";
 import moment from "moment";
 
 class MovieDetailComponent extends Component {
-	state = {
-		listShowTime,
-		movie: {},
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			selectValue: "",
+			listShowTime,
+			movie: {},
+			location: "",
+			date: "",
+		};
+
+		this.handleDropdownChange = this.handleDropdownChange.bind(this);
+	}
+
+	handleDropdownChange(e) {
+		this.setState({ [e.target.name]: e.target.value });
+	}
+
 	async componentDidMount() {
 		const { id } = this.props.match.params;
 		const response = await http().get(`movies/${id}`);
@@ -28,6 +41,17 @@ class MovieDetailComponent extends Component {
 	// 	const data = listMovie.filter((item) => item.id === Number(id))[0];
 	// 	this.setState({ movie: data });
 	// }
+	searchCinema = (e) => {
+		this.setState({ [e.target.name]: e.target.value }, async () => {
+			if (this.state.location !== "" && this.state.date !== "") {
+				const data = new URLSearchParams();
+				data.append("date", this.state.date);
+				data.append("location", this.state.location);
+				data.append("movieId", this.props.match.params.id);
+				await http().get(`showtimes?${data.toString()}`);
+			}
+		});
+	};
 	render() {
 		const { listShowTime, movie } = this.state;
 		const { id } = this.props.match.params;
@@ -88,22 +112,40 @@ class MovieDetailComponent extends Component {
 						<Col lg={3} md={5} xs={12} className="d-grid pt-4">
 							<Form.Group className="d-flex align-items-center">
 								<Image src={calendar} className="position-absolute pl-3" />
-								<Form.Control type="date" className="border-0 pl-5 pick" />
+								<Form.Control
+									name="date"
+									defaultValue=""
+									as="select"
+									className="border-0 pl-5 pick"
+									onChange={this.handleDropdownChange}
+								>
+									<option value="">Select date</option>
+									<option value="2021-02-01">2021-02-01</option>
+									<option value="2021-02-02">2021-02-02</option>
+								</Form.Control>
 							</Form.Group>
 						</Col>
 
 						<Col lg={3} md={5} xs={12} className="d-grid pt-4">
 							<Form.Group className="d-flex align-items-center">
 								<Image src={map} className="position-absolute pl-3" />
-								<Form.Control as="select" className="border-0 pl-5 pick">
-									<option selected>Purwokerto</option>
-									<option value="1">Jakarta</option>
-									<option value="2">Bandung</option>
-									<option value="3">Surabaya</option>
+								<Form.Control
+									name="location"
+									defaultValue=""
+									as="select"
+									className="border-0 pl-5 pick"
+									onChange={this.handleDropdownChange}
+								>
+									<option value="">Select city</option>
+									<option value="Surabaya">Surabaya</option>
+									<option value="Jakarta">Jakarta</option>
 								</Form.Control>
 							</Form.Group>
 						</Col>
 					</Row>
+
+					<p>Selected value date is : {this.state.date}</p>
+					<p>Selected value location is : {this.state.location}</p>
 
 					<Row xs={1} md={2} lg={3} className="g-3">
 						{listShowTime.map((item) => (
