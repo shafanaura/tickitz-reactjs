@@ -20,13 +20,9 @@ class MovieDetailComponent extends Component {
 			movie: {},
 			location: "",
 			date: "",
+			showResults: [],
+			showLocDate: [],
 		};
-
-		this.handleDropdownChange = this.handleDropdownChange.bind(this);
-	}
-
-	handleDropdownChange(e) {
-		this.setState({ [e.target.name]: e.target.value });
 	}
 
 	async componentDidMount() {
@@ -48,12 +44,15 @@ class MovieDetailComponent extends Component {
 				data.append("date", this.state.date);
 				data.append("location", this.state.location);
 				data.append("movieId", this.props.match.params.id);
-				await http().get(`showtimes?${data.toString()}`);
+				const response = await http().get(`showtimes?${data.toString()}`);
+				this.setState({
+					showResults: response.data.results,
+				});
 			}
 		});
 	};
 	render() {
-		const { listShowTime, movie } = this.state;
+		const { movie, showResults, showLocDate } = this.state;
 		const { id } = this.props.match.params;
 		return (
 			<div>
@@ -117,7 +116,7 @@ class MovieDetailComponent extends Component {
 									defaultValue=""
 									as="select"
 									className="border-0 pl-5 pick"
-									onChange={this.handleDropdownChange}
+									onChange={this.searchCinema}
 								>
 									<option value="">Select date</option>
 									<option value="2021-02-01">2021-02-01</option>
@@ -134,21 +133,19 @@ class MovieDetailComponent extends Component {
 									defaultValue=""
 									as="select"
 									className="border-0 pl-5 pick"
-									onChange={this.handleDropdownChange}
+									onChange={this.searchCinema}
 								>
 									<option value="">Select city</option>
-									<option value="Surabaya">Surabaya</option>
-									<option value="Jakarta">Jakarta</option>
+									<option value="6">Purwokerto</option>
+									<option value="7">Surabaya</option>
+									<option value="8">Jakarta</option>
 								</Form.Control>
 							</Form.Group>
 						</Col>
 					</Row>
 
-					<p>Selected value date is : {this.state.date}</p>
-					<p>Selected value location is : {this.state.location}</p>
-
 					<Row xs={1} md={2} lg={3} className="g-3">
-						{listShowTime.map((item) => (
+						{showResults.map((item) => (
 							<Col className="pt-4 col" key={String(item.id)}>
 								<ShowtimeComponent movieId={id} data={item} />
 							</Col>

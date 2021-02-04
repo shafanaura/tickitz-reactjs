@@ -4,3 +4,6 @@
 .card-movie {
 	border-radius: 24px !important;
 }
+.btn-time:focus {
+	color: #5f2eea !important;
+}

@@ -7,6 +7,7 @@ import {
 	Button,
 	ListGroup,
 	Form,
+	Alert,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Google, Facebook } from "react-bootstrap-icons";
@@ -87,6 +88,11 @@ class SignUp extends Component {
 					<p class="text-link-lg-26 pb-3 pt-5">Fill your additional details</p>
 					<Form onSubmit={this.submitData}>
 						<Form.Group controlId="formBasicEmail">
+							{this.props.auth.successMessage !== "" && (
+								<Alert variant="success">
+									{this.props.auth.successMessage}
+								</Alert>
+							)}
 							<Form.Label>Email</Form.Label>
 							<Form.Control
 								onChange={(event) => this.changeText(event)}

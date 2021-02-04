@@ -20,7 +20,7 @@ const authReducer = (state = initialState, action) => {
 		case "REGISTER": {
 			return {
 				...state,
-				token: action.payload,
+				successMessage: action.message,
 			};
 		}
 		case "SET_REGISTER_MESSAGE": {

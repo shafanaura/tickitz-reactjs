@@ -39,7 +39,7 @@ export const register = (email, password) => {
 			const results = await http().post(`auth/register`, params);
 			dispatch({
 				type: "REGISTER",
-				payload: results.data.token,
+				message: results.data.message,
 			});
 		} catch (err) {
 			const { message } = err.response.data;
