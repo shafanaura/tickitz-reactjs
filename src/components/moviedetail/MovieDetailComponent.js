@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Col, Form, Image, Row } from "react-bootstrap";
+import { Button, Card, Col, Form, Image, Row } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import listMovie from "../../utils/listMovie";
 import listShowTime from "../../utils/listShowTime";
@@ -43,7 +43,7 @@ class MovieDetailComponent extends Component {
 				const data = new URLSearchParams();
 				data.append("date", this.state.date);
 				data.append("location", this.state.location);
-				data.append("movieId", this.props.match.params.id);
+				data.append("movie", this.props.match.params.id);
 				const response = await http().get(`showtimes?${data.toString()}`);
 				this.setState({
 					showResults: response.data.results,
@@ -147,7 +147,65 @@ class MovieDetailComponent extends Component {
 					<Row xs={1} md={2} lg={3} className="g-3">
 						{showResults.map((item) => (
 							<Col className="pt-4 col" key={String(item.id)}>
-								<ShowtimeComponent movieId={id} data={item} />
+								<Card className="card-movie border-0">
+									<Card.Body className="pb-0">
+										<Row>
+											<Col
+												xs={4}
+												className="d-flex align-items-center justify-content-center"
+											>
+												<Image src={item.picture} width={100} alt="" />
+											</Col>
+											<Col xs={8}>
+												<p className="text-link-lg text-left m-0">
+													{item.cinema}
+												</p>
+												<p className="text-300-12 text-left m-0">
+													{item.address}
+												</p>
+											</Col>
+										</Row>
+									</Card.Body>
+									<hr />
+									<Card.Body className="pt-0">
+										<Row xs={4}>
+											{item.value.map((time) => {
+												return (
+													<Col className="time">
+														<input type="radio" name="radio" id="radio1" />
+														<label for="radio1">{time}</label>
+														{/* <Button
+										type="radio"
+										size="sm"
+										variant="light"
+										className="btn-time"
+									>
+										{time}
+									</Button> */}
+													</Col>
+												);
+											})}
+										</Row>
+									</Card.Body>
+									<Card.Body className="pt-0 pb-2">
+										<h6 className="float-left text-sm">Price</h6>
+										<p className="float-right text-link-sm">
+											${item.price}/seat
+										</p>
+									</Card.Body>
+									<Card.Body className="pt-0 d-flex justify-content-between">
+										<Button
+											// onClick={() => this.bookNow(data.id)}
+											variant="primary"
+											className="btn-nav shadow"
+										>
+											Book now
+										</Button>
+										<Button variant="light" className="btn-nav text-primary">
+											Add to cart
+										</Button>
+									</Card.Body>
+								</Card>
 							</Col>
 						))}
 					</Row>
