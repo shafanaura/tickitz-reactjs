@@ -1,4 +1,6 @@
 const initialState = {
+	movies: [],
+	details: {},
 	token: null,
 	errorMsg: "",
 };
@@ -15,6 +17,18 @@ const movieReducer = (state = initialState, action) => {
 			return {
 				...state,
 				errorMsg: action.payload,
+			};
+		}
+		case "GET_ALL_MOVIE": {
+			return {
+				...state,
+				movies: action.payload,
+			};
+		}
+		case "GET_MOVIE_DETAIL": {
+			return {
+				...state,
+				details: action.payload,
 			};
 		}
 		default: {

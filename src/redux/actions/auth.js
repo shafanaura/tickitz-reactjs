@@ -36,10 +36,10 @@ export const register = (email, password) => {
 				type: "SET_REGISTER_MESSAGE",
 				payload: "",
 			});
-			const results = await http().post(`auth/register`, params);
+			const response = await http().post(`auth/register`, params);
 			dispatch({
 				type: "REGISTER",
-				message: results.data.message,
+				message: response.data.message,
 			});
 		} catch (err) {
 			const { message } = err.response.data;

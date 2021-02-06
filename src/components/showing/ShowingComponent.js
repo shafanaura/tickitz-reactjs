@@ -2,21 +2,16 @@ import React, { Component } from "react";
 import { Card, Col, Image, Row } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import http from "../../helpers/http";
-import listMovie from "../../utils/listMovie";
+import { connect } from "react-redux";
+import { getAllMovie } from "../../redux/actions/movie";
 import "./styles.css";
 
 class ShowingComponent extends Component {
-	state = {
-		movies: [],
-	};
 	async componentDidMount() {
-		const response = await http().get("movies");
-		this.setState({
-			movies: response.data.results,
-		});
+		this.props.getAllMovie();
 	}
 	render() {
-		const { movies } = this.state;
+		const { movie } = this.props;
 		return (
 			<div>
 				<Row>
@@ -32,9 +27,13 @@ class ShowingComponent extends Component {
 					</Col>
 				</Row>
 				<div className="scrollmenu text-center">
-					{movies.map((item, index) => {
+					{movie.movies.map((item, index) => {
 						return (
-							<Link to={`/movie-detail/${item.id}`} className="link">
+							<Link
+								to={`/movie-detail/${item.id}`}
+								className="link"
+								key={item.id}
+							>
 								<Card className="scroll card mr-4">
 									<Card.Body className="card-body">
 										<Image
@@ -51,4 +50,13 @@ class ShowingComponent extends Component {
 		);
 	}
 }
-export default withRouter(ShowingComponent);
+
+const mapStateToProps = (state) => ({
+	movie: state.movie,
+});
+
+const mapDispatchToProps = {
+	getAllMovie,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShowingComponent);

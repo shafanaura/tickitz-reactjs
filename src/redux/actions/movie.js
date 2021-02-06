@@ -24,3 +24,29 @@ export const movie = (title) => {
 		}
 	};
 };
+
+export const getAllMovie = () => {
+	return async (dispatch) => {
+		const response = await http().get(`movies`);
+		dispatch({
+			type: "GET_ALL_MOVIE",
+			payload: response.data.results,
+		});
+		dispatch({
+			type: "TOGGLE_MOVIE_LOADING",
+		});
+	};
+};
+
+export const getMovieDetail = (id) => {
+	return async (dispatch) => {
+		const response = await http().get(`movies/${id}`);
+		dispatch({
+			type: "GET_MOVIE_DETAIL",
+			payload: response.data.results,
+		});
+		dispatch({
+			type: "TOGGLE_MOVIE_LOADING",
+		});
+	};
+};
