@@ -32,14 +32,20 @@ export default class App extends Component {
 							<Route path="/login" component={SignIn} />
 							<Route path="/forgot-password" component={ForgotPassword} />
 							<Route path="/movie-detail/:id" component={MovieDetail} />
-							<Route path="/order-page" component={OrderPage} />
-							<Route path="/payment" component={PaymentPage} />
-							<Route path="/ticket-result" component={TicketResult} />
-							<Route path="/profile-page" component={ProfilePage} />
-							<Route path="/admin-page" component={AdminPage} />
-							<Route path="/test">
+							<PrivateRoute path="/order-page" privateComponent={OrderPage} />
+							<PrivateRoute path="/payment" privateComponent={PaymentPage} />
+							<PrivateRoute
+								path="/ticket-result"
+								privateComponent={TicketResult}
+							/>
+							<PrivateRoute
+								path="/profile-page"
+								privateComponent={ProfilePage}
+							/>
+							<PrivateRoute path="/admin-page" privateComponent={AdminPage} />
+							{/* <Route path="/test">
 								<Test />
-							</Route>
+							</Route> */}
 							<PrivateRoute path="/admin-panel" privateComponent={AdminPanel} />
 							<Route path="*" component={Error} />
 						</Switch>

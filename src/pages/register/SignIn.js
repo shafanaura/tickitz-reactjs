@@ -21,8 +21,8 @@ class SignIn extends Component {
 	};
 	componentDidUpdate() {
 		if (this.props.auth.token) {
-			const { from = null } = this.props.location.state;
-			this.props.history.push((from && from.pathname) || "/");
+			const { history } = this.props;
+			history.push("/");
 		}
 	}
 	componentDidMount() {

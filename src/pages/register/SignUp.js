@@ -28,6 +28,13 @@ class SignUp extends Component {
 		const { email, password } = this.state;
 		this.props.register(email, password);
 	};
+	componentDidUpdate() {
+		if (this.props.auth.successMessage) {
+			window.alert("Success go to login");
+			const { history } = this.props;
+			history.push("/login");
+		}
+	}
 	changeText = (event) => {
 		this.setState({ [event.target.name]: event.target.value });
 	};
