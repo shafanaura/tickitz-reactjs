@@ -30,23 +30,23 @@ export const createOrder = (
 	};
 };
 
-// export const getOrder = (data) => {
-// 	return async (dispatch) => {
-// 		try {
-// 			dispatch({
-// 				type: "SET_GET_ORDER_MESSAGE",
-// 				payload: "",
-// 			});
-// 			dispatch({
-// 				type: "GET_ORDER",
-// 				payload: data,
-// 			});
-// 		} catch (err) {
-// 			const { message } = err.response.data;
-// 			dispatch({
-// 				type: "SET_GET_ORDER_MESSAGE",
-// 				payload: message,
-// 			});
-// 		}
-// 	};
-// };
+export const createSeat = (data = []) => {
+	return async (dispatch) => {
+		try {
+			dispatch({
+				type: "SET_GET_SEAT_MESSAGE",
+				payload: "",
+			});
+			dispatch({
+				type: "GET_SEAT",
+				payload: data,
+			});
+		} catch (err) {
+			const { message } = err.response.data;
+			dispatch({
+				type: "SET_GET_SEAT_MESSAGE",
+				payload: message,
+			});
+		}
+	};
+};

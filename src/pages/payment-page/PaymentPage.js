@@ -9,10 +9,6 @@ import PanelRight from "../../components/splitpanel/PanelRight";
 import FooterComponent from "../../components/footer/FooterComponent";
 import PayMethod from "../../components/payment/PayMethod";
 
-const buttonPrevious = () => {
-	return <div>dawd</div>;
-};
-
 export default class PaymentPage extends Component {
 	render() {
 		return (

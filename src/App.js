@@ -17,6 +17,7 @@ import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import persistedStore from "./redux/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import Test from "./components/order/Test";
 
 export default class App extends Component {
 	render() {
@@ -36,6 +37,9 @@ export default class App extends Component {
 							<Route path="/ticket-result" component={TicketResult} />
 							<Route path="/profile-page" component={ProfilePage} />
 							<Route path="/admin-page" component={AdminPage} />
+							<Route path="/test">
+								<Test />
+							</Route>
 							<PrivateRoute path="/admin-panel" privateComponent={AdminPanel} />
 							<Route path="*" component={Error} />
 						</Switch>

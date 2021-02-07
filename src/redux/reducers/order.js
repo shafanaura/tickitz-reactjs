@@ -2,6 +2,7 @@ const initialState = {
 	listOrder: [],
 	token: null,
 	errorMsg: "",
+	seatOrder: [],
 };
 
 const orderReducer = (state = initialState, action) => {
@@ -20,7 +21,7 @@ const orderReducer = (state = initialState, action) => {
 				listGetOrder: action.payload,
 			};
 		}
-		case "GET_SEAT_ORDER": {
+		case "GET_SEAT": {
 			return {
 				...state,
 				seatOrder: action.payload,

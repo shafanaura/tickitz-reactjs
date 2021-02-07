@@ -3,8 +3,7 @@ import { Card, Col, Image } from "react-bootstrap";
 import Moment from "react-moment";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import cineone from "../../assets/images/cineone.png";
-import { createOrder } from "../../redux/actions/order";
+import { createOrder, createSeat } from "../../redux/actions/order";
 
 class OrderInfo extends Component {
 	render() {
@@ -19,7 +18,7 @@ class OrderInfo extends Component {
 					<Card.Body className="pb-0">
 						<div className="text-center">
 							<Image src={dataShowtime.picture} height={40} alt="" />
-							<p className="text-link-lg pt-2">{dataShowtime.title}</p>
+							<p className="text-link-lg pt-2">{dataShowtime.cinema}</p>
 						</div>
 						<div className="d-flex justify-content-between">
 							<p className="text-xs text-color-label">Movie selected</p>
@@ -29,7 +28,7 @@ class OrderInfo extends Component {
 						</div>
 						<div className="d-flex justify-content-between">
 							<p className="text-xs text-color-label">
-								<Moment format="D MMMM YYYY">{dataDate}</Moment>
+								<Moment format="DD MMMM YYYY">{dataDate}</Moment>
 							</p>
 							<p className="text-right text-link-xs text-color-title">
 								{dataShowtime.times}
@@ -44,7 +43,7 @@ class OrderInfo extends Component {
 						<div className="d-flex justify-content-between">
 							<p className="text-xs text-color-label">Seat choosed</p>
 							<p className="text-right text-link-xs text-color-title">
-								C4, C5, C6
+								{this.props.order.seatOrder + ""}
 							</p>
 						</div>
 					</Card.Body>
@@ -52,7 +51,7 @@ class OrderInfo extends Component {
 					<Card.Body className="pt-0">
 						<p className="float-left text-link-md">Total Payment</p>
 						<p className="float-end text-display-xs-bold text-primary text-right">
-							${dataShowtime.price}
+							${dataShowtime.price * this.props.order.seatOrder.length}
 						</p>
 					</Card.Body>
 				</Card>
@@ -64,7 +63,7 @@ class OrderInfo extends Component {
 const mapStateToProps = (state) => ({
 	order: state.order,
 });
-const mapDispatchToProps = { createOrder };
+const mapDispatchToProps = { createOrder, createSeat };
 
 export default withRouter(
 	connect(mapStateToProps, mapDispatchToProps)(OrderInfo),
