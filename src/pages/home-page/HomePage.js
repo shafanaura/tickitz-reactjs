@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import { Col, Container, Row, Image, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import ComingMovie from "../../components/comingmovie/ComingMovie";
-import ComingMovies from "../../components/comingmovie/ComingMovie";
 import FooterComponent from "../../components/footer/FooterComponent";
 import NavbarAuth from "../../components/navbar/NavbarAuth";
+import NavbarComponent from "../../components/navbar/NavbarComponent";
 import ShowingComponent from "../../components/showing/ShowingComponent";
 import SubscribeComponent from "../../components/subscribe/SubscribeComponent";
-import listMonth from "../../utils/listMonth";
 import "./styles.css";
+import { login, autoLogin } from "../../redux/actions/auth";
+import { connect } from "react-redux";
 
 class HomePage extends Component {
 	render() {
 		return (
 			<div>
-				<NavbarAuth />
+				{this.props.auth.token ? <NavbarComponent /> : <NavbarAuth />}
 				<Container>
 					<section>
 						<Row>
@@ -78,4 +78,9 @@ class HomePage extends Component {
 	}
 }
 
-export default HomePage;
+const mapStateToProps = (state) => ({
+	auth: state.auth,
+});
+const mapDispatchToProps = { login, autoLogin };
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

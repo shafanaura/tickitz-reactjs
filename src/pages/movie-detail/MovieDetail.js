@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { login, autoLogin } from "../../redux/actions/auth";
+import { connect } from "react-redux";
 import MovieDetailComponent from "../../components/moviedetail/MovieDetailComponent";
 import NavbarComponent from "../../components/navbar/NavbarComponent";
 import FooterComponent from "../../components/footer/FooterComponent";
 import "./styles.css";
+import NavbarAuth from "../../components/navbar/NavbarAuth";
 
-export default class MovieDetail extends Component {
+class MovieDetail extends Component {
 	render() {
 		return (
 			<>
-				<NavbarComponent />
+				{this.props.auth.token ? <NavbarComponent /> : <NavbarAuth />}
 				<Container>
 					<MovieDetailComponent />
 					<div className="d-flex py-2">
@@ -26,3 +29,10 @@ export default class MovieDetail extends Component {
 		);
 	}
 }
+
+const mapStateToProps = (state) => ({
+	auth: state.auth,
+});
+const mapDispatchToProps = { login, autoLogin };
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieDetail);

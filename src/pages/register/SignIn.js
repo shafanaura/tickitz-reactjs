@@ -21,6 +21,7 @@ class SignIn extends Component {
 	};
 	componentDidUpdate() {
 		if (this.props.auth.token) {
+			window.alert("Success go to dashboard");
 			const { history } = this.props;
 			history.push("/");
 		}
