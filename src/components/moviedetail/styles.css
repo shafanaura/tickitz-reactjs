@@ -10,3 +10,12 @@
 	box-shadow: 4px 8px 21px -5px rgba(0, 0, 0, 0.28);
 	transition: 0.5s;
 }
+.time {
+	padding: 10px 0px;
+}
+.card-movie {
+	border-radius: 24px !important;
+}
+.btn-time:focus {
+	color: #5f2eea !important;
+}

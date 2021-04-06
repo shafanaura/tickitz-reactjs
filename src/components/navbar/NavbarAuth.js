@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Nav, Form, Image, Container } from "react-bootstrap";
+import { Navbar, Nav, Form, Image, Container, Dropdown } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import tickitz_purple from "../../assets/images/tickitz-purple.svg";
@@ -49,6 +49,21 @@ function NavbarAuth(props) {
 							</svg>
 						</Nav.Item>
 						<Nav.Item>
+							<Dropdown>
+								<Dropdown.Toggle variant="success" id="dropdown-basic">
+									Dropdown Button
+								</Dropdown.Toggle>
+
+								<Dropdown.Menu>
+									<Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+									<Dropdown.Item href="#/action-2">
+										Another action
+									</Dropdown.Item>
+									<Dropdown.Item href="#/action-3">
+										Something else
+									</Dropdown.Item>
+								</Dropdown.Menu>
+							</Dropdown>
 							<Link to="/sign-up" className="btn btn-primary btn-nav">
 								Sign up
 							</Link>

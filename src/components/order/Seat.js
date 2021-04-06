@@ -12,28 +12,28 @@ class Seat extends Component {
 	};
 	seatClick = (e) => {
 		let { name, checked } = e.target;
-		this.setState((e) => {
-			let selectedSeat = e.listSeat;
-			return (selectedSeat[name] = checked);
-		});
-	};
-	handleClick = (event) => {
-		const { name, checked } = event.target;
-
-		this.setState((prevState) => {
-			const listSeat = prevState.listSeat;
-			listSeat[name] = checked;
-			return listSeat;
-		});
+		this.setState(
+			(e) => {
+				let selectedSeat = e.listSeat;
+				return (selectedSeat[name] = checked);
+			},
+			() => {
+				this.props.createSeat(
+					Object.keys(this.state.listSeat)
+						.filter((x) => this.state.listSeat[x])
+						.join(", "),
+				);
+			},
+		);
 	};
 	render() {
-		const favSeats = Object.keys(this.state.listSeat)
-			.filter((key) => this.state.listSeat[key])
-			.join(", ");
+		// const favSeats = Object.keys(this.state.listSeat)
+		// 	.filter((key) => this.state.listSeat[key])
+		// 	.join(", ");
 
-		const displaySeat = Object.keys(this.state.listSeat).filter(
-			(x) => this.state.listSeat[x],
-		);
+		// const displaySeat = Object.keys(this.state.listSeat).filter(
+		// 	(x) => this.state.listSeat[x],
+		// );
 		const seatNum = [];
 		for (let i = 1; i < 15; i++) {
 			if (i === 8) {
@@ -41,6 +41,7 @@ class Seat extends Component {
 			}
 			seatNum.push(<td className="pl-3">{i}</td>);
 		}
+
 		const seat = [];
 		for (let i = 1; i < 15; i++) {
 			if (i === 8) {
@@ -52,20 +53,42 @@ class Seat extends Component {
 						type="checkbox"
 						value={`A${i}`}
 						name={`A${i}`}
-						onClick={() => this.props.createSeat(displaySeat)}
 						onChange={this.seatClick}
 					/>
 				</td>,
 			);
 		}
-		console.log(this.props);
+
 		return (
 			<div>
-				{/* <p>Selected value seat is : {displaySeat}</p> */}
 				<table>
 					<tbody>
 						<tr>
 							<td>A</td>
+							{seat}
+						</tr>
+						<tr>
+							<td>B</td>
+							{seat}
+						</tr>
+						<tr>
+							<td>C</td>
+							{seat}
+						</tr>
+						<tr>
+							<td>D</td>
+							{seat}
+						</tr>
+						<tr>
+							<td>E</td>
+							{seat}
+						</tr>
+						<tr>
+							<td>F</td>
+							{seat}
+						</tr>
+						<tr>
+							<td>G</td>
 							{seat}
 						</tr>
 					</tbody>
@@ -99,10 +122,10 @@ class Seat extends Component {
 		);
 	}
 }
-
 const mapStateToProps = (state) => ({
 	order: state.order,
 });
+
 const mapDispatchToProps = { createSeat };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Seat));

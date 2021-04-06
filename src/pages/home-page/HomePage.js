@@ -14,7 +14,7 @@ class HomePage extends Component {
 	render() {
 		return (
 			<div>
-				{this.props.auth.token ? <NavbarComponent /> : <NavbarAuth />}
+				<NavbarComponent />
 				<Container>
 					<section>
 						<Row>

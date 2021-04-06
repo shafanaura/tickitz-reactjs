@@ -1,15 +1,24 @@
 import React from "react";
-import { Navbar, Nav, Form, Image, Container } from "react-bootstrap";
+import {
+	Navbar,
+	Nav,
+	Form,
+	Image,
+	Container,
+	Dropdown,
+	NavDropdown,
+} from "react-bootstrap";
 import { Search } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import tickitz_purple from "../../assets/images/tickitz-purple.svg";
+import { connect } from "react-redux";
 import "./styles.css";
 
 function NavbarComponent(props) {
 	return (
 		<Navbar expand="lg">
 			<Container>
-				<Navbar.Brand href="#home">
+				<Navbar.Brand href="#home" className="m-0">
 					<Link to="/">
 						<Image src={tickitz_purple} />
 					</Link>
@@ -35,27 +44,39 @@ function NavbarComponent(props) {
 							</Form.Control>
 						</Nav.Item>
 						<Nav.Item>
-							<svg
-								width="24"
-								height="24"
-								viewBox="0 0 24 24"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
+							<Form action="" className="search-form">
+								<input type="search" className="search-input" />
+								<i class="fa fa-search"></i>
+							</Form>
+						</Nav.Item>
+
+						{props.auth.token ? (
+							<NavDropdown
+								title={
+									<Image
+										src="https://icon-library.com/images/default-user-icon/default-user-icon-4.jpg"
+										roundedCircle
+									/>
+								}
+								id="basic-nav-dropdown"
+								className="m-0"
 							>
-								<path
-									d="M10 18C11.775 17.9996 13.4988 17.4054 14.897 16.312L19.293 20.708L20.707 19.294L16.311 14.898C17.405 13.4997 17.9996 11.7754 18 10C18 5.589 14.411 2 10 2C5.589 2 2 5.589 2 10C2 14.411 5.589 18 10 18ZM10 4C13.309 4 16 6.691 16 10C16 13.309 13.309 16 10 16C6.691 16 4 13.309 4 10C4 6.691 6.691 4 10 4Z"
-									fill="#414141"
-								/>
-							</svg>
-						</Nav.Item>
-						<Nav.Item>
-							<Link to="/profile-page">
-								<Image
-									src="https://cachedimages.podchaser.com/256x256/aHR0cHM6Ly9jcmVhdG9yLWltYWdlcy5wb2RjaGFzZXIuY29tL2EyYjc4MGQxNGU0ODhhMTdjZjhiZTQyYWU3MjZmNWUzLmpwZWc%3D/aHR0cHM6Ly93d3cucG9kY2hhc2VyLmNvbS9pbWFnZXMvbWlzc2luZy1pbWFnZS5wbmc%3D"
-									roundedCircle
-								/>
+								<NavDropdown.Item href="#action/3.1">
+									Signed in as <br /> <strong>shafa</strong>
+								</NavDropdown.Item>
+								<NavDropdown.Divider />
+								<NavDropdown.Item href="#action/3.2">Home</NavDropdown.Item>
+								<NavDropdown.Item href="#action/3.3">
+									Your Profile
+								</NavDropdown.Item>
+								<NavDropdown.Divider />
+								<NavDropdown.Item href="#action/3.4">Sign out</NavDropdown.Item>
+							</NavDropdown>
+						) : (
+							<Link to="/sign-up" className="btn btn-primary btn-nav">
+								Sign up
 							</Link>
-						</Nav.Item>
+						)}
 					</Nav>
 				</Navbar.Collapse>
 			</Container>
@@ -63,4 +84,8 @@ function NavbarComponent(props) {
 	);
 }
 
-export default NavbarComponent;
+const mapStateToProps = (state) => ({
+	auth: state.auth,
+});
+
+export default connect(mapStateToProps)(NavbarComponent);
