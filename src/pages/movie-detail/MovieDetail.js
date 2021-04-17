@@ -7,31 +7,30 @@ import MovieDetailComponent from "../../components/moviedetail/MovieDetailCompon
 import NavbarComponent from "../../components/navbar/NavbarComponent";
 import FooterComponent from "../../components/footer/FooterComponent";
 import "./styles.css";
-import NavbarAuth from "../../components/navbar/NavbarAuth";
 
 class MovieDetail extends Component {
-	render() {
-		return (
-			<>
-				{this.props.auth.token ? <NavbarComponent /> : <NavbarAuth />}
-				<Container>
-					<MovieDetailComponent />
-					<div className="d-flex py-2">
-						<hr className="my-auto flex-grow-1" />
-						<div className="px-3 text-primary">
-							<Link>view more</Link>
-						</div>
-						<hr className="my-auto flex-grow-1" />
-					</div>
-				</Container>
-				<FooterComponent />
-			</>
-		);
-	}
+  render() {
+    return (
+      <>
+        <NavbarComponent />
+        <Container>
+          <MovieDetailComponent />
+          <div className="d-flex py-2">
+            <hr className="my-auto flex-grow-1" />
+            <div className="px-3 text-primary">
+              <Link>view more</Link>
+            </div>
+            <hr className="my-auto flex-grow-1" />
+          </div>
+        </Container>
+        <FooterComponent />
+      </>
+    );
+  }
 }
 
 const mapStateToProps = (state) => ({
-	auth: state.auth,
+  auth: state.auth,
 });
 const mapDispatchToProps = { login, autoLogin };
 

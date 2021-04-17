@@ -20,38 +20,35 @@ import { PersistGate } from "redux-persist/integration/react";
 import Test from "./components/order/Test";
 
 export default class App extends Component {
-	render() {
-		const { store, persistor } = persistedStore();
-		return (
-			<Provider store={store}>
-				<PersistGate persistor={persistor}>
-					<BrowserRouter>
-						<Switch>
-							<Route path="/" exact component={HomePage} />
-							<Route path="/sign-up" component={SignUp} />
-							<Route path="/login" component={SignIn} />
-							<Route path="/forgot-password" component={ForgotPassword} />
-							<Route path="/movie-detail/:id" component={MovieDetail} />
-							<PrivateRoute path="/order-page" privateComponent={OrderPage} />
-							<PrivateRoute path="/payment" privateComponent={PaymentPage} />
-							<PrivateRoute
-								path="/ticket-result"
-								privateComponent={TicketResult}
-							/>
-							<PrivateRoute
-								path="/profile-page"
-								privateComponent={ProfilePage}
-							/>
-							<PrivateRoute path="/admin-page" privateComponent={AdminPage} />
-							{/* <Route path="/test">
-								<Test />
-							</Route> */}
-							<PrivateRoute path="/admin-panel" privateComponent={AdminPanel} />
-							<Route path="*" component={Error} />
-						</Switch>
-					</BrowserRouter>
-				</PersistGate>
-			</Provider>
-		);
-	}
+  render() {
+    const { store, persistor } = persistedStore();
+    return (
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <BrowserRouter>
+            <Switch>
+              <Route path="/" exact component={HomePage} />
+              <Route path="/sign-up" component={SignUp} />
+              <Route path="/login" component={SignIn} />
+              <Route path="/forgot-password" component={ForgotPassword} />
+              <Route path="/movie-detail/:id" component={MovieDetail} />
+              <PrivateRoute path="/order-page" privateComponent={OrderPage} />
+              <PrivateRoute path="/payment" privateComponent={PaymentPage} />
+              <PrivateRoute
+                path="/ticket-result"
+                privateComponent={TicketResult}
+              />
+              <PrivateRoute
+                path="/profile-page"
+                privateComponent={ProfilePage}
+              />
+              <PrivateRoute path="/admin-page" privateComponent={AdminPage} />
+              <PrivateRoute path="/admin-panel" privateComponent={AdminPanel} />
+              <Route path="*" component={Error} />
+            </Switch>
+          </BrowserRouter>
+        </PersistGate>
+      </Provider>
+    );
+  }
 }

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Col, Container, Row, Image, Button } from "react-bootstrap";
 import ComingMovie from "../../components/comingmovie/ComingMovie";
 import FooterComponent from "../../components/footer/FooterComponent";
-import NavbarAuth from "../../components/navbar/NavbarAuth";
 import NavbarComponent from "../../components/navbar/NavbarComponent";
 import ShowingComponent from "../../components/showing/ShowingComponent";
 import SubscribeComponent from "../../components/subscribe/SubscribeComponent";
@@ -14,7 +13,7 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <NavbarAuth />
+        <NavbarComponent />
         <Container>
           <section>
             <Row>

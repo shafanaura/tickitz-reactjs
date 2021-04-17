@@ -60,7 +60,7 @@ class MovieDetailComponent extends Component {
           </Col>
           <Col xs={12} md={8}>
             <p className="text-display-sm-bold m-0">{movie.details.title}</p>
-            <p className="text-md">{movie.details.genreName + " "}</p>
+            <p className="text-md">{movie.details.genreName + ""}</p>
             <Row xs={4} className="pt-2">
               <Col xs={6} lg={4}>
                 <div className="flex-column justify-content-center d-flex">
