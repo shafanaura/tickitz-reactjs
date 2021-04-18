@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Container, Row, Image, Button } from "react-bootstrap";
+import { Col, Container, Row, Image } from "react-bootstrap";
 import ComingMovie from "../../components/comingmovie/ComingMovie";
 import FooterComponent from "../../components/footer/FooterComponent";
 import NavbarComponent from "../../components/navbar/NavbarComponent";

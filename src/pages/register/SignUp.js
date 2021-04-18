@@ -7,10 +7,8 @@ import {
   Button,
   ListGroup,
   Form,
-  Alert,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Google, Facebook } from "react-bootstrap-icons";
 import LeftRegister from "../../components/register/LeftRegister";
 import RightRegister from "../../components/register/RightRegister";
 import tickitz_white from "../../assets/images/tickitz-white.svg";

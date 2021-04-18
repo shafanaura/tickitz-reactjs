@@ -5,20 +5,17 @@ import {
   Form,
   Image,
   Container,
-  Dropdown,
   NavDropdown,
 } from "react-bootstrap";
-import { Search } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import tickitz_purple from "../../assets/images/tickitz-purple.svg";
 import { connect } from "react-redux";
 import "./styles.css";
-import avatar from "../../assets/images/default-pict.jpg";
-import { getUser } from "../../redux/actions/user";
+import { userDetail } from "../../redux/actions/user";
 
 class NavbarComponent extends Component {
   async componentDidMount() {
-    this.props.getUser(this.props.auth.token);
+    this.props.userDetail(this.props.auth.token);
   }
   render() {
     const { data } = this.props.user;
@@ -33,9 +30,9 @@ class NavbarComponent extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="nav-link mr-auto">
-              <Nav.Link href="#">Movies</Nav.Link>
-              <Nav.Link href="#">Cinemas</Nav.Link>
-              <Nav.Link href="#">Buy Ticket</Nav.Link>
+              <Nav.Link href="/">Movies</Nav.Link>
+              <Nav.Link href="/">Cinemas</Nav.Link>
+              <Nav.Link href="/">Buy Ticket</Nav.Link>
             </Nav>
             <Nav className="nav-link justify-content-end" activeKey="/home">
               <Nav.Item>
@@ -108,6 +105,6 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-const mapDispatchToProps = { getUser };
+const mapDispatchToProps = { userDetail };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavbarComponent);

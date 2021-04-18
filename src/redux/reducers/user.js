@@ -1,5 +1,6 @@
 const initialState = {
   data: {},
+  detail: {},
   message: "",
   errorMsg: "",
 };
@@ -10,6 +11,13 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         data: action.payload,
+        message: action.message,
+      };
+    }
+    case "UPDATE_USER": {
+      return {
+        ...state,
+        detail: action.payload,
         message: action.message,
       };
     }

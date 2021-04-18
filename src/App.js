@@ -17,7 +17,6 @@ import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import persistedStore from "./redux/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import Test from "./components/order/Test";
 
 export default class App extends Component {
   render() {

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { Card, Col, Image, Form, Button } from "react-bootstrap";
+import { Card, Col, Image } from "react-bootstrap";
 import { connect } from "react-redux";
 import "./styles.css";
-import { getUser } from "../../redux/actions/user";
+import { userDetail } from "../../redux/actions/user";
 
 class InfoProfile extends Component {
   async componentDidMount() {
-    this.props.getUser(this.props.auth.token);
+    this.props.userDetail(this.props.auth.token);
   }
   render() {
     const { data } = this.props.user;
@@ -47,7 +47,9 @@ class InfoProfile extends Component {
                 className="img-profile shadow"
               />
               <p className="text-link-lg-20 pt-3 mb-0">
-                {data.fullName === null ? data.email : data.fullName}
+                {data.firstName === null
+                  ? data.email
+                  : data.firstName + " " + data.lastName}
               </p>
               <p className="text-color-body">Moviegoers</p>
               <hr />
@@ -82,6 +84,6 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-const mapDispatchToProps = { getUser };
+const mapDispatchToProps = { userDetail };
 
 export default connect(mapStateToProps, mapDispatchToProps)(InfoProfile);
