@@ -6,6 +6,12 @@ Repo Backend : bit.ly/3uF2S8h <br>
 Demo app : bit.ly/3dSogAc <br>
 Screenshot : bit.ly/3ei5suq
 
+# Screenshot
+<img src="./src/assets/images/1.png" width="50%" />
+<img src="./src/assets/images/2.png" width="50%" />
+<img src="./src/assets/images/3.png" width="50%" />
+<img src="./src/assets/images/4.png" width="50%" />
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
