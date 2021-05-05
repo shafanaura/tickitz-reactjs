@@ -1,7 +1,7 @@
-# Tentang Aplikasi
-Aplikasi pemesanan tiket bioskop secara online berbasis website menggunakan library React js dan backend Express js. Kamu bisa pesan tempat duduk, film, cinema, dan jam tayang yang sudah tersedia di Tickitz ini. Berikut beberapa informasi tambahan dari Tickitz. Untuk backend nya saya deploy di AWS
+# About
+Website-based online movie ticket booking application using the React js library and Express js backend. You can order seats, movies, cinema, and show times that are already available on Tickitz. Here's some additional information from Tickitz. I deployed the backend on AWS
 
-# Info Lainnya
+# More Information
 Repo Backend : bit.ly/3uF2S8h <br>
 Demo app : bit.ly/3dSogAc <br>
 Screenshot : bit.ly/3ei5suq
