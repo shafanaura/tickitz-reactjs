@@ -1,24 +1,13 @@
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers";
-import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import hardSet from "redux-persist/lib/stateReconciler/hardSet";
+import { persistStore } from "redux-persist";
 import logger from "redux-logger";
 
-const persistConfig = {
-  key: "root",
-  storage,
-  stateReconciler: hardSet,
-};
-
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-
 const persistedStore = () => {
-  const composeEnhancers =
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-  let store = createStore(persistedReducer, applyMiddleware(thunk, logger));
-  let persistor = persistStore(store);
+  const store = createStore(rootReducer, applyMiddleware(thunk, logger));
+
+  const persistor = persistStore(store);
   return { store, persistor };
 };
 
