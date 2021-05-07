@@ -1,40 +1,39 @@
 const initialState = {
-	token: null,
-	errorMsg: "",
+  token: null,
+  errorMsg: "",
+  message: "",
 };
 
 const authReducer = (state = initialState, action) => {
-	switch (action.type) {
-		case "LOGIN": {
-			return {
-				...state,
-				token: action.payload,
-			};
-		}
-		case "SET_LOGIN_MESSAGE": {
-			return {
-				...state,
-				errorMsg: action.payload,
-			};
-		}
-		case "REGISTER": {
-			return {
-				...state,
-				successMessage: action.message,
-			};
-		}
-		case "SET_REGISTER_MESSAGE": {
-			return {
-				...state,
-				errorMsg: action.payload,
-			};
-		}
-		default: {
-			return {
-				...state,
-			};
-		}
-	}
+  switch (action.type) {
+    case "LOGIN": {
+      return {
+        ...state,
+        token: action.payload,
+        message: action.message,
+        errorMsg: "",
+      };
+    }
+    case "REGISTER": {
+      return {
+        ...state,
+        message: action.message,
+        errorMsg: "",
+      };
+    }
+    case "SET_AUTH_MESSAGE": {
+      return {
+        ...state,
+        message: "",
+        errorMsg: action.payload,
+      };
+    }
+    default: {
+      return {
+        ...state,
+      };
+    }
+  }
 };
 
 export default authReducer;
